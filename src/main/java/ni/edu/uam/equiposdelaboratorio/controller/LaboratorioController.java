@@ -248,30 +248,19 @@ public class LaboratorioController {
 
     @FXML
     private void eliminarEquipo() {
-
         if (idSeleccionado == null) {
             return;
         }
-
         try {
-            Alert confirmacion = new Alert(
-                    Alert.AlertType.CONFIRMATION);
-
+            Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
             confirmacion.setTitle("Confirmación");
             confirmacion.setHeaderText("Eliminar equipo");
-            confirmacion.setContentText(
-                    "¿Está seguro de que desea eliminar el equipo seleccionado?");
-
-            Optional<ButtonType> resultado =
-                    confirmacion.showAndWait();
-
-            if (resultado.isEmpty() ||
-                    resultado.get() != ButtonType.OK) {
+            confirmacion.setContentText("¿Está seguro de que desea eliminar el equipo seleccionado?");
+            Optional<ButtonType> resultado = confirmacion.showAndWait();
+            if (resultado.isEmpty() || resultado.get() != ButtonType.OK) {
                 return;
             }
-
             boolean eliminado = equipoDAO.eliminar(idSeleccionado);
-
             if (!eliminado) {
                 showAlert(
                         Alert.AlertType.ERROR,
@@ -281,10 +270,8 @@ public class LaboratorioController {
                 );
                 return;
             }
-
             limpiarEquipo();
             cargarEquipos();
-
             showAlert(
                     Alert.AlertType.INFORMATION,
                     "Eliminación exitosa",
@@ -294,7 +281,6 @@ public class LaboratorioController {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-
             showAlert(
                     Alert.AlertType.ERROR,
                     "Error",
@@ -304,18 +290,12 @@ public class LaboratorioController {
         }
     }
 
-    // Cargar equipos en TableView
     private void cargarEquipos() {
-
         try {
             List<Equipo> equipos = equipoDAO.listar();
-
-            tblEquipos.setItems(
-                    FXCollections.observableArrayList(equipos));
-
+            tblEquipos.setItems(FXCollections.observableArrayList(equipos));
         } catch (Exception ex) {
             ex.printStackTrace();
-
             showAlert(
                     Alert.AlertType.ERROR,
                     "Error de carga",
@@ -325,30 +305,19 @@ public class LaboratorioController {
         }
     }
 
-    // Buscar equipos por nombre y tipo
     @FXML
     private void buscarEquipo() {
-
         try {
             String nombre = txtNombreBuscar.getText();
-
             Tipo_Equipo tipo = cmbTipoEquipoBuscar.getValue();
-
             Long idTipo = null;
-
             if (tipo != null) {
                 idTipo = tipo.getId();
             }
-
-            List<Equipo> equipos =
-                    equipoDAO.buscar(nombre, idTipo);
-
-            tblEquipos.setItems(
-                    FXCollections.observableArrayList(equipos));
-
+            List<Equipo> equipos = equipoDAO.buscar(nombre, idTipo);
+            tblEquipos.setItems(FXCollections.observableArrayList(equipos));
         } catch (Exception ex) {
             ex.printStackTrace();
-
             showAlert(
                     Alert.AlertType.ERROR,
                     "Error",
@@ -358,47 +327,31 @@ public class LaboratorioController {
         }
     }
 
-    // Mostrar todos los equipos
     @FXML
     private void mostrarTodo() {
-
         txtNombreBuscar.clear();
         cmbTipoEquipoBuscar.setValue(null);
-
         cargarEquipos();
     }
 
-    // Limpiar formulario
     @FXML
     private void limpiarEquipo() {
-
         tblEquipos.getSelectionModel().clearSelection();
-
         idSeleccionado = null;
-
         txtCodigo.clear();
         txtNombre.clear();
         txtMarca.clear();
         txtCantidad.clear();
-
         cmbTipoEquipo.setValue(null);
         cmbEstado.setValue(null);
-
         actualizarBotones();
     }
 
-    // Mostrar alertas
-    private void showAlert(Alert.AlertType type,
-                           String title,
-                           String header,
-                           String message) {
-
+    private void showAlert(Alert.AlertType type, String title, String header, String message) {
         Alert alert = new Alert(type);
-
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(message);
-
         alert.showAndWait();
     }
 }

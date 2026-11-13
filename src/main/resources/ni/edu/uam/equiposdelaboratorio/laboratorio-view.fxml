@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="552.0" prefWidth="785.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.equiposdelaboratorio.controller.LaboratorioController">
+<AnchorPane prefHeight="579.0" prefWidth="785.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.equiposdelaboratorio.controller.LaboratorioController">
    <children>
       <Label layoutX="23.0" layoutY="23.0" text="Equipos de Laboratorio">
          <font>
@@ -69,7 +69,7 @@
       <Button fx:id="btnBuscar" layoutX="538.0" layoutY="205.0" mnemonicParsing="false" onAction="#buscarEquipo" prefHeight="35.0" prefWidth="68.0" text="Buscar" />
       <Button fx:id="btnMostrarTodo" layoutX="632.0" layoutY="205.0" mnemonicParsing="false" onAction="#mostrarTodo" prefHeight="35.0" prefWidth="91.0" text="Mostrar todos" />
       <Separator layoutY="310.0" prefHeight="6.0" prefWidth="785.0" />
-      <TableView fx:id="tblEquipos" layoutX="23.0" layoutY="326.0" prefHeight="200.0" prefWidth="738.0">
+      <TableView fx:id="tblEquipos" layoutX="23.0" layoutY="326.0" prefHeight="242.0" prefWidth="738.0">
         <columns>
           <TableColumn fx:id="colCodigo" prefWidth="63.0" text="Código" />
           <TableColumn fx:id="colNombre" prefWidth="204.0" text="Nombre" />
