@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="552.0" prefWidth="785.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.equiposdelaboratorio.controller.LaboratorioController">
+   <children>
+      <Label layoutX="23.0" layoutY="23.0" text="Equipos de Laboratorio">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Separator layoutY="68.0" prefHeight="6.0" prefWidth="785.0" />
+      <GridPane layoutX="23.0" layoutY="82.0" prefHeight="178.0" prefWidth="392.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="132.0" minWidth="10.0" prefWidth="89.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="308.0" minWidth="10.0" prefWidth="303.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Código:" />
+            <Label text="Nombre:" GridPane.rowIndex="1" />
+            <TextField fx:id="txtCodigo" promptText="Código del equipo" GridPane.columnIndex="1" />
+            <Label text="Marca:" GridPane.rowIndex="2" />
+            <Label text="Cantidad:" GridPane.rowIndex="3" />
+            <TextField fx:id="txtNombre" promptText="Nombre del equipo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtMarca" promptText="Marca del equipo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtCantidad" promptText="Cantidad del equipo" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Tipo de equipo:" GridPane.rowIndex="4" />
+            <ComboBox fx:id="cmbTipoEquipo" prefHeight="25.0" prefWidth="201.0" promptText="Seleccione el tipo de equipo" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Estado:" GridPane.rowIndex="5" />
+            <ComboBox fx:id="cmbEstado" prefWidth="150.0" promptText="Seleccione el estado" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         </children>
+      </GridPane>
+      <HBox layoutX="114.0" layoutY="264.0" prefHeight="35.0" prefWidth="276.0" spacing="10.0">
+         <children>
+            <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#guardarEquipo" text="Guardar" />
+            <Button fx:id="btnActualizar" mnemonicParsing="false" onAction="#actualizarEquipo" text="Actualizar" />
+            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#eliminarEquipo" text="Eliminar" />
+            <Button fx:id="btnLimpiar" mnemonicParsing="false" onAction="#limpiarEquipo" text="Limpiar" />
+         </children>
+      </HBox>
+      <Separator layoutX="435.0" layoutY="69.0" orientation="VERTICAL" prefHeight="242.0" prefWidth="21.0" />
+      <Label layoutX="548.0" layoutY="93.0" text="Realizar Búsqueda">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <HBox layoutX="478.0" layoutY="128.0" prefHeight="35.0" prefWidth="270.0">
+         <children>
+            <Label text="Nombre: " />
+            <TextField fx:id="txtNombreBuscar" prefHeight="25.0" prefWidth="213.0" promptText="Nombre de equipo" />
+         </children>
+      </HBox>
+      <HBox layoutX="478.0" layoutY="163.0" prefHeight="49.0" prefWidth="270.0">
+         <children>
+            <Label text="Tipo:   " />
+            <ComboBox fx:id="cmbTipoEquipoBuscar" prefHeight="25.0" prefWidth="228.0" promptText="Seleccione tipo de equipo" />
+         </children>
+      </HBox>
+      <Button fx:id="btnBuscar" layoutX="538.0" layoutY="205.0" mnemonicParsing="false" onAction="#buscarEquipo" prefHeight="35.0" prefWidth="68.0" text="Buscar" />
+      <Button fx:id="btnMostrarTodo" layoutX="632.0" layoutY="205.0" mnemonicParsing="false" onAction="#mostrarTodo" prefHeight="35.0" prefWidth="91.0" text="Mostrar todos" />
+      <Separator layoutY="310.0" prefHeight="6.0" prefWidth="785.0" />
+      <TableView fx:id="tblEquipos" layoutX="23.0" layoutY="326.0" prefHeight="200.0" prefWidth="738.0">
+        <columns>
+          <TableColumn fx:id="colCodigo" prefWidth="63.0" text="Código" />
+          <TableColumn fx:id="colNombre" prefWidth="204.0" text="Nombre" />
+            <TableColumn fx:id="colMarca" minWidth="0.0" prefWidth="143.0" text="Marca" />
+            <TableColumn fx:id="colEstado" prefWidth="133.0" text="Estado" />
+            <TableColumn fx:id="colCantidad" prefWidth="90.0" text="Cantidad" />
+            <TableColumn fx:id="colTipo" prefWidth="104.0" text="Tipo" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
